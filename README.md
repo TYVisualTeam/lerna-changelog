@@ -19,17 +19,17 @@ Install
 Install with `yarn`:
 
 ```bash
-yarn add lerna-changelog --dev
+yarn add lerna-changelog-gitlab --dev
 # or globally
-yarn global add lerna-changelog
+yarn global add lerna-changelog-gitlab
 ```
 
 We're using `yarn` but you can use `npm` if you like:
 
 ```bash
-npm install --save-dev lerna-changelog
+npm install --save-dev lerna-changelog-gitlab
 # or globally
-npm install --global lerna-changelog
+npm install --global lerna-changelog-gitlab
 ```
 
 
@@ -37,7 +37,7 @@ Usage
 ------------------------------------------------------------------------------
 
 ```bash
-$ lerna-changelog
+$ lerna-changelog-gitlab
 ```
 
 ```md
@@ -54,7 +54,7 @@ $ lerna-changelog
 - [@careful-coder](https://github.com/careful-coder)
 ```
 
-By default `lerna-changelog` will show all pull requests that have been merged
+By default `lerna-changelog-gitlab` will show all pull requests that have been merged
 since the latest tagged commit in the repository. That is however only true for
 pull requests with certain labels applied. The labels that are supported by
 default are:
@@ -69,16 +69,16 @@ You can also use the `--from` and `--to` options to view a different
 range of pull requests:
 
 ```bash
-lerna-changelog --from=v1.0.0 --to=v2.0.0
+lerna-changelog-gitlab --from=v1.0.0 --to=v2.0.0
 ```
 
 ### Monorepo support
 
-If you have a packages folder and your projects in subfolders of that folder `lerna-changelog` will detect it and include the package names in the changelog for the relevant changes.
+If you have a packages folder and your projects in subfolders of that folder `lerna-changelog-gitlab` will detect it and include the package names in the changelog for the relevant changes.
 
 ### GitHub Token
 
-Since `lerna-changelog` interacts with the GitLab API you may run into rate
+Since `lerna-changelog-gitlab` interacts with the GitLab API you may run into rate
 limiting issues which can be resolved by supplying a "personal access token":
 
 ```
@@ -92,7 +92,7 @@ for the GitLab API with the `read_repository` scope for your private repositorie
 Configuration
 ------------------------------------------------------------------------------
 
-You can configure `lerna-changelog` in various ways. The easiest way is by
+You can configure `lerna-changelog-gitlab` in various ways. The easiest way is by
 adding a `changelog` key to the `package.json` file of your project:
 
 ```json5

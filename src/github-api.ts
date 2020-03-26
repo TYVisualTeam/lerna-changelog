@@ -35,7 +35,7 @@ export default class GithubAPI {
   private auth: string;
 
   constructor(config: Options) {
-    this.cacheDir = config.cacheDir && path.join(config.rootPath, config.cacheDir, "github");
+    this.cacheDir = config.cacheDir && path.join(config.rootPath, config.cacheDir, "gitlab");
     this.auth = this.getAuthToken();
     if (!this.auth) {
       throw new ConfigurationError("Must provide GITHUB_AUTH");
