@@ -1,15 +1,16 @@
-lerna-changelog
+lerna-changelog-gitlab
 ==============================================================================
 
-[![TravisCI Build Status][travis-badge]][travis-badge-url]
+> Forked from [`lerna-changelog`](https://github.com/lerna/lerna-changelog)
+>
+> Everything is the name, expect it's integrated with Gitlab!
+
 [![Latest NPM release][npm-badge]][npm-badge-url]
 
-[npm-badge]: https://img.shields.io/npm/v/lerna-changelog.svg
-[npm-badge-url]: https://www.npmjs.com/package/lerna-changelog
-[travis-badge]: https://img.shields.io/travis/lerna/lerna-changelog/master.svg
-[travis-badge-url]: https://travis-ci.org/lerna/lerna-changelog
+[npm-badge]: https://img.shields.io/npm/v/lerna-changelog-gitlab.svg
+[npm-badge-url]: https://www.npmjs.com/package/lerna-changelog-gitlab
 
-PR-based changelog generator with monorepo support
+**Gitlab** PR-based changelog generator with monorepo support
 
 
 Install
@@ -77,16 +78,15 @@ If you have a packages folder and your projects in subfolders of that folder `le
 
 ### GitHub Token
 
-Since `lerna-changelog` interacts with the GitHub API you may run into rate
+Since `lerna-changelog` interacts with the GitLab API you may run into rate
 limiting issues which can be resolved by supplying a "personal access token":
 
 ```
-export GITHUB_AUTH="..."
+export AUTH_TOKEN="..."
 ```
 
 You'll need a [personal access token](https://github.com/settings/tokens)
-for the GitHub API with the `repo` scope for private repositories or just
-`public_repo` scope for public repositories.
+for the GitLab API with the `read_repository` scope for your private repositories.
 
 
 Configuration

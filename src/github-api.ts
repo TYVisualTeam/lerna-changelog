@@ -43,15 +43,29 @@ export default class GithubAPI {
   }
 
   public getBaseIssueUrl(repo: string): string {
-    return `https://github.com/${repo}/issues/`;
+    return `https://gitlab.com/${repo}/-/issues/`;
   }
 
   public async getIssueData(repo: string, issue: string): Promise<GitHubIssueResponse> {
-    return this._fetch(`https://api.github.com/repos/${repo}/issues/${issue}`);
+    return this._fetch(`https://gitlab.com/api/v4/projects/${repo.replace(/\//g, "%2F")}/issues/${issue}`).then(
+      res => ({
+        ...res,
+        number: res.iid,
+        labels: res.labels.map((name: string) => ({ name })),
+        user: {
+          login: res.author.username,
+          html_url: res.author.web_url,
+        },
+      })
+    );
   }
 
   public async getUserData(login: string): Promise<GitHubUserResponse> {
-    return this._fetch(`https://api.github.com/users/${login}`);
+    return this._fetch(`https://gitlab.com/api/v4/users?username=${login}`).then(res => {
+      const user = res[0];
+      if (!user) return { login, name: login, html_for: `https://gitlab.com/${login}` };
+      return { ...user, login: user.username, html_url: user.web_url };
+    });
   }
 
   private async _fetch(url: string): Promise<any> {
@@ -68,7 +82,7 @@ export default class GithubAPI {
     throw new ConfigurationError(`Fetch error: ${res.statusText}.\n${JSON.stringify(parsedResponse)}`);
   }
 
-  private getAuthToken(): string {
-    return process.env.GITHUB_AUTH || "";
+  protected getAuthToken(): string {
+    return process.env.AUTH_TOKEN || "";
   }
 }
